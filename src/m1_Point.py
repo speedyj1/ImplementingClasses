@@ -54,7 +54,7 @@ class Point(object):
         self.x = x + self.x
         self.y = y + self.y
     def get_number_of_moves_made(self):
-        if 
+        
 ########################################################################
 # NOTE: For ALL of the methods that you implement, the method is allowed
 # to have additional side effects as needed by it and/or other methods.
