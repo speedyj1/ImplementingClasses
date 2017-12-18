@@ -5,7 +5,7 @@ NOTE: This is NOT rosegraphics -- it is your OWN Point class.
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
          their colleagues and Jack Speedy.
 """  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
-
+import math
 
 def main():
     """ Calls the   TEST   functions in this module. """
@@ -43,6 +43,7 @@ class Point(object):
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.number_of_moves = 0
     def __repr__(self):
         return 'Point(' + str(self.x) + ',' + str(self.y) + ')'
     def clone(self):
@@ -50,11 +51,19 @@ class Point(object):
     def move_to(self, x, y):
         self.x = x
         self.y = y
-    def move_by(self, x, y):
-        self.x = x + self.x
-        self.y = y + self.y
+        self.number_of_moves = self.number_of_moves + 1
+    def move_by(self, dx, dy):
+        self.x = dx + self.x
+        self.y = dy + self.y
+        self.number_of_moves = self.number_of_moves + 1
     def get_number_of_moves_made(self):
-        
+        return self.number_of_moves
+    def get_distance_from(self, Point):
+        x = Point.x - self.x
+        y = Point.y - self.y
+        d = math.sqrt(x**2 + y**2)
+        print(d)
+
 ########################################################################
 # NOTE: For ALL of the methods that you implement, the method is allowed
 # to have additional side effects as needed by it and/or other methods.
@@ -562,7 +571,7 @@ def run_test_get_number_of_moves_made():
         print('Actual for p2 moves made:  ', p2.get_number_of_moves_made())
     """
     # ------------------------------------------------------------------
-    # TODO: 8.  Follow the same instructions as in TODO 3 above,
+    # DONE: 8.  Follow the same instructions as in DONE 3 above,
     #    but for the  get_number_of_moves_made  method specified above.
     # ------------------------------------------------------------------
     print()
