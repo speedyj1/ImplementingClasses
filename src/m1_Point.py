@@ -50,7 +50,9 @@ class Point(object):
     def move_to(self, x, y):
         self.x = x
         self.y = y
-
+    def move_by(self, x, y):
+        self.x = x + self.x
+        self.y = y + self.y
 ########################################################################
 # NOTE: For ALL of the methods that you implement, the method is allowed
 # to have additional side effects as needed by it and/or other methods.
@@ -454,14 +456,42 @@ def run_test_move_by():
         print('Actual for p2:  ', p2)
     """
     # ------------------------------------------------------------------
-    # TODO: 7.  Follow the same instructions as in TODO 3 above,
+    # DONE: 7.  Follow the same instructions as in DONE 3 above,
     #           but for the  move_by  method specified above.
     # ------------------------------------------------------------------
     print()
     print('-----------------------------------------------------------')
     print('Testing the   move_by   method of the Point class.')
     print('-----------------------------------------------------------')
+    p1 = Point(10, 8)
+    p2 = Point(50, 20)
+    print()
+    print('Expected for p1: Point(10, 8)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(50, 20)')
+    print('Actual for p2:  ', p2)
 
+    p1.move_by(5, -1)
+    p2.move_by(0, 0)
+    print()
+    print('Expected for p1: Point(15, 7)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(50, 20)')
+    print('Actual for p2:  ', p2)
+
+    p2.move_by(200, 0)
+    print()
+    print('Expected for p1: Point(15, 7)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(250, 20)')
+    print('Actual for p2:  ', p2)
+
+    p2.move_by(-100, 300)
+    print()
+    print('Expected for p1: Point(15, 7)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(150, 320)')
+    print('Actual for p2:  ', p2)
 
 def run_test_get_number_of_moves_made():
     """
