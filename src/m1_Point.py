@@ -44,18 +44,27 @@ class Point(object):
         self.x = x
         self.y = y
         self.number_of_moves = 0
+        self.distance = 0
+        self.x_i = x
+        self.y_i = y
     def __repr__(self):
         return 'Point(' + str(self.x) + ',' + str(self.y) + ')'
     def clone(self):
         return Point(self.x, self.y)
     def move_to(self, x, y):
+        x1 = x - self.x
+        y1 = y - self.y
+        distance = math.sqrt(x1**2 + y1**2)
         self.x = x
         self.y = y
         self.number_of_moves = self.number_of_moves + 1
+        self.distance = self.distance + distance
     def move_by(self, dx, dy):
+        distance = math.sqrt(dx**2 + dy**2)
         self.x = dx + self.x
         self.y = dy + self.y
         self.number_of_moves = self.number_of_moves + 1
+        self.distance = self.distance + distance
     def get_number_of_moves_made(self):
         return self.number_of_moves
     def get_distance_from(self, Point):
@@ -63,12 +72,11 @@ class Point(object):
         y = Point.y - self.y
         return math.sqrt(x**2 + y**2)
     def get_distance_from_start(self):
-        z = self.clone()
-        x = self.x - z.x
-        y = self.y - z.y
+        x = self.x - self.x_i
+        y = self.y - self.y_i
         return math.sqrt(x**2 + y**2)
     def get_distance_traveled(self):
-        return
+        return self.distance
 
 
 ########################################################################
